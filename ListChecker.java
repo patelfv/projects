@@ -17,12 +17,12 @@ public class ListChecker {
 	}
 	
 	public static void main(String[] args) {
-		checkIfContainsAndPrintResult(12);
-		checkIfContainsAndPrintResult(3);
-		checkIfContainsAndPrintResult(7);
+		checkIfListContainsAndPrintResult(12);
+		checkIfListContainsAndPrintResult(3);
+		checkIfListContainsAndPrintResult(7);
 	}
 
-	private static void checkIfContainsAndPrintResult(int value) {
+	private static void checkIfListContainsAndPrintResult(int value) {
 		boolean containsDuplicate = listOfValues.contains(value);
 		
 		if(containsDuplicate) {
