@@ -143,36 +143,29 @@ public class BSTOperations {
 		}
 		
 		if(node.leftNode == null && node.rightNode != null){
+			node.value = node.rightNode.value;
 			node = node.rightNode;
-			node.rightNode = null;
 		}
 		
 		if(node.leftNode != null && node.rightNode == null) {
-			node  = node.leftNode;
-			node.leftNode = null;
+			node.value = node.leftNode.value;
+			node = node.leftNode;
 		}
 		
 		if(node.leftNode != null && node.rightNode != null) {
 			TreeNode minLeftNode = findMinNode(node.rightNode);
-			
-			minLeftNode.leftNode = null;
-			minLeftNode.rightNode = null;
-			node.leftNode = minLeftNode.leftNode;
-			node.rightNode= minLeftNode.rightNode;
-			node = minLeftNode;
+			node.value = minLeftNode.value;
+			deleteNode(node.rightNode, minLeftNode.value);
 		}
 		
 		return root;
 	}
 	
 	private static TreeNode findMinNode(TreeNode root) {
-		
-		if(root == null) {
+		if(root.leftNode == null) {
 			return root;
 		}
-		
 		return findMinNode(root.leftNode);
-		
 	}
 
 	/**
@@ -219,7 +212,7 @@ public class BSTOperations {
 		System.out.println("Post Order Traversal -->");
 		printPostOrderTraversal(node);
 		
-		/*deleteNode(node, 17);
+		deleteNode(node, 17);
 		deleteNode(node, 67);
 		
 		System.out.println("Pre Order Traversal -->");
@@ -229,6 +222,6 @@ public class BSTOperations {
 		printInOrderTraversal(node);
 		
 		System.out.println("Post Order Traversal -->");
-		printPostOrderTraversal(node);*/
+		printPostOrderTraversal(node);
 	}
 }
